@@ -3,7 +3,7 @@
 #include "class.page_manager.hpp"
 
 PageManager::PageManager(){
-	root = new Operation("S");
+	root = new Operation("");
 	branch = root;
 	leaf = root;
 };
@@ -33,7 +33,7 @@ bool PageManager::next_leaf(){
 };
 
 bool PageManager::add_branch(){
-	branch->setUp(new Operation());
+	branch->setUp(new Operation(""));
 	if(branch->getUp() != NULL){
 		branch = branch->getUp();
 		leaf = branch;
@@ -46,6 +46,10 @@ bool PageManager::add_branch(){
 };
 
 bool PageManager::add_leaf(string v){
+	if(leaf == branch && leaf->getValue() == ""){
+		leaf->setValue(v);
+		return true;
+	}
 	leaf->setAcross(new Operation(v));
 	if(leaf->getAcross() != NULL){
 		leaf = leaf->getAcross();
@@ -71,7 +75,7 @@ void PageManager::traverse(){
 			o = o->getAcross();
 		}
 		b = b->getUp();
-		cout << "Next Branch" << endl;
+		// cout << "Next Branch" << endl;
 		o = b;
 	}
 }
