@@ -65,8 +65,8 @@ void PageManager::traverse(){
 	Operation* b = root;
 	Operation* o = b;
 
-	while(b->getUp() != NULL){
-		while(o != NULL){
+	while(b){
+		while(o){
 			cout << o->getValue() << endl;
 			o = o->getAcross();
 		}
