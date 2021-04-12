@@ -80,4 +80,19 @@ void PageManager::traverse(){
 	}
 }
 
+
+int PageManager::count(){
+	Operation* b = root;
+	Operation* o = b;
+	int count = 0;
+	while(b){
+		while(o){
+			count++;
+			o = o->getAcross();
+		}
+		b = b->getUp();
+		o = b;
+	}
+	return count;
+}
 #endif
