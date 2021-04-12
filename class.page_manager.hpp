@@ -15,6 +15,7 @@ class PageManager {
 		int count();
 		void start();
 		bool step();
+		string input;
 		string displayNumberFormatter(int num);
 		string displayNumberFormatter(string n);
 
