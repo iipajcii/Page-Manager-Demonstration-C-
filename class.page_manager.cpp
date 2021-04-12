@@ -224,8 +224,8 @@ vector<string> PageManager::getPages(){
 }
 
 bool PageManager::add_page(string v){
-	add_leaf(v);
-	if(!isFull()){
+	history.push_back(v);
+	if(!isFull() && !isLoaded(v)){
 		pages.push_back(v);
 		return true;
 	}
