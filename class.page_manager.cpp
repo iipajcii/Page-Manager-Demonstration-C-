@@ -186,6 +186,10 @@ string PageManager::displayNumberFormatter(string n)
 }
 
 bool PageManager::step(){
+	vector<string> p(pages);
+	while(p.size() < frame_count){p.push_back("");}
+	page_data.push_back(p);
+
 	if(leaf){
 		if(leaf->getAcross()){
 			leaf = leaf->getAcross();
