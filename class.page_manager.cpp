@@ -232,4 +232,13 @@ bool PageManager::isFull(){
 	if(activePageCount() >= getFrameCount()){return true;}
 	else {return false;}
 }
+
+void PageManager::incrementPageFaultCount(){
+	page_fault_count++;
+}
+
+int PageManager::getPageFaultCount(){
+	return page_fault_count;
+}
+
 #endif

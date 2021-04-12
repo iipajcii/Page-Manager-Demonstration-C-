@@ -21,6 +21,8 @@ class PageManager {
 		bool step();
 		string input;
 		void setFrameCount(int f);
+		void incrementPageFaultCount();
+		int getPageFaultCount();
 		int getFrameCount();
 		string displayNumberFormatter(int num);
 		string displayNumberFormatter(string n);
