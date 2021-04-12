@@ -8,6 +8,13 @@ PageManager::PageManager(){
 	leaf = root;
 };
 
+PageManager::PageManager(string in){
+	root = new Operation("");
+	branch = root;
+	leaf = root;
+	input = in;
+};
+
 bool PageManager::next_branch(){
 	if(branch->getUp() != NULL){
 		branch = branch->getUp();
