@@ -174,6 +174,7 @@ string PageManager::displayNumberFormatter(int num)
 
 string PageManager::displayNumberFormatter(string n)
 {
+	if(n == ""){return "     ";}
 	int num = std::stoi(n);
 	if(num < 10)
 	{return "  " + to_string(num) + "  ";}
