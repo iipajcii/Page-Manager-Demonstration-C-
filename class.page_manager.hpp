@@ -24,6 +24,7 @@ class PageManager {
 		string displayNumberFormatter(int num);
 		string displayNumberFormatter(string n);
 		vector<string> getPages();
+		bool isFull();
 
 	private:
 		Operation *root;

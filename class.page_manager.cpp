@@ -205,4 +205,9 @@ bool PageManager::add_page(string v){
 		return false;
 	}
 }
+
+bool PageManager::isFull(){
+	if(activePageCount() >= getFrameCount()){return true;}
+	else {return false;}
+}
 #endif
