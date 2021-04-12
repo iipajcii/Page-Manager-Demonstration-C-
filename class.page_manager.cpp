@@ -243,6 +243,10 @@ bool PageManager::isFull(){
 	else {return false;}
 }
 
+
+vector<vector<string>> PageManager::getPageData(){
+	return page_data;
+}
 void PageManager::incrementPageFaultCount(){
 	page_fault_count++;
 }
