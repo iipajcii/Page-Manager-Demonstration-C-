@@ -232,6 +232,14 @@ bool PageManager::add_page(string v){
 	else{
 		return false;
 	}
+
+bool PageManager::setInput(string v){
+	input = v;
+	for(int counter = 0, count = v.length(); counter < count; counter++)
+	{
+		add_page(to_string(v.at(counter)));
+	}
+	start();
 }
 
 int PageManager::activePageCount(){
