@@ -119,6 +119,20 @@ string PageManager::displayNumberFormatter(string n)
  	return to_string(num);
 }
 
+bool PageManager::step(){
+	if(leaf){
+		if(leaf->getAcross()){
+			leaf = leaf->getAcross();
+			return true;
+		}
+		else if (branch->getUp()) {
+			branch = branch->getUp();
+			leaf = branch;
+			return true;
+		}
+		return false;
+	}
+}
 
 void PageManager::start(){
 	leaf = root;
