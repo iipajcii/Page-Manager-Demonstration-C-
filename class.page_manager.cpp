@@ -138,4 +138,12 @@ void PageManager::start(){
 	leaf = root;
 	branch = root;
 }
+
+void PageManager::setFrameCount(int f){
+	frame_count = f;
+}
+
+int PageManager::getFrameCount(){
+	return frame_count;
+}
 #endif

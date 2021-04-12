@@ -16,6 +16,8 @@ class PageManager {
 		void start();
 		bool step();
 		string input;
+		void setFrameCount(int f);
+		int getFrameCount();
 		string displayNumberFormatter(int num);
 		string displayNumberFormatter(string n);
 
@@ -23,5 +25,6 @@ class PageManager {
 		Operation *root;
 		Operation *branch;
 		Operation *leaf;
+		int frame_count;
 };
 #endif
