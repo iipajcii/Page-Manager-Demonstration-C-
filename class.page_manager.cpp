@@ -252,6 +252,14 @@ bool PageManager::isFull(){
 }
 
 
+bool PageManager::replace(string a, string b)
+{
+	for(int counter = 0, count = getPages().size(); counter < count; counter++){
+		if(pages.at(counter) == a){pages.at(counter) = b; return true;}
+	}
+	return false;
+}
+
 vector<vector<string>> PageManager::getPageData(){
 	return page_data;
 }

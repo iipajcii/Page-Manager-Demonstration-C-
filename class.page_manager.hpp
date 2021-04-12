@@ -28,6 +28,7 @@ class PageManager {
 		string displayNumberFormatter(string n);
 		vector<string> getPages();
 		bool isFull();
+		bool replace(string a, string b);
 		int activePageCount();
 		
 
