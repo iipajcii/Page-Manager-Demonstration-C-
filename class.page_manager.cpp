@@ -232,6 +232,7 @@ bool PageManager::add_page(string v){
 	else{
 		return false;
 	}
+}
 
 bool PageManager::setInput(string v){
 	input = v;
