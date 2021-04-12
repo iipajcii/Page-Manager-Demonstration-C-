@@ -161,6 +161,46 @@ int PageManager::count(){
 	return count;
 }
 
+void PageManager::display(){
+	int rows = getFrameCount();
+	int columns = input.length();
+
+	cout << "Get Page Data Start" << endl;
+	for (int outerVector = 0, outerVectorSize = page_data.size(); outerVector < outerVectorSize; outerVector++)
+	{ 
+		for (int innerVector = 0, innerVectorSize = page_data.at(outerVector).size(); innerVector < innerVectorSize; innerVector++)
+		{
+			cout << page_data.at(outerVector).at(innerVector) << " ";
+		}
+		cout << endl;
+	}
+	cout << "Get Page Data Stop" << endl;
+	int dataCounter = 0;
+	for(int i = 0; i < columns; i++){cout << "+-------+";}
+	cout << endl;
+	for (int column_count = 0 ;column_count < columns; column_count++)
+	{
+		cout << "|   " << (input.at(column_count)) <<"   |";
+	}
+	cout << endl;
+	for(int i = 0; i < columns; i++){cout << "+-------+";}
+	cout << endl;
+	for(int row_count = 0; row_count < rows; row_count++){
+		for(int i = 0; i < columns; i++){cout << "+-------+";}
+		cout << endl;
+		for (int column_count = 0 ;column_count < columns; column_count++)
+		{
+			cout << "| " << displayNumberFormatter(getPageDataColumn(dataCounter)) <<" |";
+			dataCounter++;
+			// step();
+		}
+		cout << endl;
+		if(row_count == rows - 1){for(int i = 0; i < columns; i++){cout << "+-------+";}}
+	}
+	cout << endl;
+
+}
+
 string PageManager::displayNumberFormatter(int num)
 {
 	if(num < 10)
