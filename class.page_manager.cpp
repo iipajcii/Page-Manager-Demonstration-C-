@@ -312,6 +312,51 @@ bool PageManager::replace(string a, string b)
 	return false;
 }
 
+void PageManager::Least_Recently_Used(){
+	start();
+	int frameCount = getFrameCount();			
+	
+	vector<string> s;
+	for(int counter = 0, count = input.length(); counter < count; counter++){
+		if(!add_page((*(new string(1, input.at(counter)))))){
+			s = getPages();
+			cout << "Page Current State" << endl;
+			int countFrames = s.size();
+			for(int counterFrames = 0; counterFrames < countFrames; counterFrames++){
+			    cout << s.at(counterFrames) << " ";
+			}
+			cout << endl;
+			cout << endl;
+			cout << "End Display Current State" << endl;
+			cout << "Display History" << endl;
+			for(int historyCounter = getHistory().size() - 1; historyCounter >= 0; historyCounter--){
+			    cout << history.at(historyCounter) << " ";
+			}
+			cout << endl;
+			cout << endl;
+			cout << "End Display History" << endl;
+			for(int historyCounter = 0, historyCount = history.size(); historyCounter < historyCount; historyCounter++){
+				if(isLoaded(history.at(historyCounter)) && !isLoaded((*(new string(1, input.at(counter)))))){
+					cout << "Replacing:" << history.at(historyCounter)<< endl;
+					replace(history.at(historyCounter),(*(new string(1, input.at(counter)))));
+			     	s = getPages();
+					int countFrames = s.size();
+					cout << "Page Current State" << endl;
+					for(int counterFrames = 0; counterFrames < countFrames; counterFrames++){
+						cout << s.at(counterFrames) << " ";
+					}
+					cout << endl;
+					cout << endl;
+					cout << "End Display Current State" << endl;
+					break;
+                    }
+               }
+          }
+          step();
+     }
+     display();
+}
+
 vector<vector<string>> PageManager::getPageData(){
 	return page_data;
 }
