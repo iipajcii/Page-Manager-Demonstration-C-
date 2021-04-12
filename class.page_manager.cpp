@@ -207,6 +207,8 @@ bool PageManager::step(){
 void PageManager::start(){
 	leaf = root;
 	branch = root;
+	page_data.clear();
+	history.clear();
 }
 
 void PageManager::setFrameCount(int f){
