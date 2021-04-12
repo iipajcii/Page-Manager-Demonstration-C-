@@ -72,19 +72,22 @@ string PageManager::read_leaf(){
 	return leaf->getValue();
 };
 
-void PageManager::traverse(){
+vector<string> PageManager::traverse(){
 	Operation* b = root;
 	Operation* o = b;
+	vector<string> s;
 
 	while(b){
 		while(o){
 			cout << o->getValue() << endl;
+			s.push_back(o->getValue());
 			o = o->getAcross();
 		}
 		b = b->getUp();
 		// cout << "Next Branch" << endl;
 		o = b;
 	}
+	return s;
 }
 
 vector<string> PageManager::traverseReverse(){
