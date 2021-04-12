@@ -30,8 +30,11 @@ class PageManager {
 		string displayNumberFormatter(string n);
 		vector<string> getPages();
 		bool isFull();
+		bool isLoaded(string a);
 		bool replace(string a, string b);
+		void Least_Recently_Used();
 		int activePageCount();
+		vector<string> getHistory();
 		vector<vector<string>> getPageData();
 		string getPageDataColumn(int selector);
 		
