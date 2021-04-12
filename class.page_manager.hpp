@@ -12,6 +12,7 @@ class PageManager {
 		bool add_leaf(string v);
 		string read_leaf();
 		void traverse();
+		void traverseReverse();
 		int count();
 		void start();
 		bool step();

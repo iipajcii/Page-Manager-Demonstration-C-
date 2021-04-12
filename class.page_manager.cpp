@@ -80,6 +80,51 @@ void PageManager::traverse(){
 	}
 }
 
+void PageManager::traverseReverse(){
+	Operation* top_branch = root;
+	Operation* current_branch = root;
+	Operation* last_page = root;
+	Operation* current_page = root;
+	Operation* b = root;
+	Operation* p = root;
+
+	//Get Top Branch
+	while(current_branch->getUp()){
+		current_branch = current_branch->getUp();
+		cout << current_branch->getValue() << endl;
+	}
+
+	top_branch = current_branch;
+	
+	//Progressively Go Down from Top Branch
+	while(current_branch != root){
+		b = root;
+		while(b->getUp() != current_branch){
+			b = b->getUp();
+		}
+		
+		//Now at the branch below current branch
+		current_branch = current_page = last_page = p = b;
+
+		//Getting Last Page on Branch
+		while(last_page->getAcross()){
+			 last_page = last_page->getAcross();
+		}
+
+		//Now at the last page of the branch
+		current_page = last_page;
+		while(current_page != current_branch){
+			p = b = current_branch;
+			while(p != current_page){
+				b = p;
+				p = p->getAcross();
+			}
+			current_page = b;
+			cout << p->getValue() << endl;
+		}
+		cout << current_branch->getValue() << endl;
+	}
+}
 
 int PageManager::count(){
 	Operation* b = root;
