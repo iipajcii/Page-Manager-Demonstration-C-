@@ -191,4 +191,18 @@ void PageManager::setFrameCount(int f){
 int PageManager::getFrameCount(){
 	return frame_count;
 }
+vector<string> PageManager::getPages(){
+	return pages;
+}
+
+bool PageManager::add_page(string v){
+	add_leaf(v);
+	if(!isFull()){
+		pages.push_back(v);
+		return true;
+	}
+	else{
+		return false;
+	}
+}
 #endif
