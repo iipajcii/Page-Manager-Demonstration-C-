@@ -14,8 +14,8 @@ class PageManager {
 		bool add_leaf(string v);
 		bool add_page(string v);
 		string read_leaf();
-		void traverseReverse();
 		vector<string> traverse();
+		vector<string> traverseReverse();
 		int count();
 		void start();
 		bool step();
