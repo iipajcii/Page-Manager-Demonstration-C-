@@ -15,8 +15,8 @@ class PageManager {
 		bool add_leaf(string v);
 		bool add_page(string v);
 		string read_leaf();
-		vector<string> traverse();
-		vector<string> traverseReverse();
+		vector<Operation> traverse();
+		vector<Operation> traverseReverse();
 		void display();
 		int count();
 		void start();
@@ -28,14 +28,14 @@ class PageManager {
 		int getFrameCount();
 		string displayNumberFormatter(int num);
 		string displayNumberFormatter(string n);
-		vector<string> getPages();
+		vector<Operation> getPages();
 		bool isFull();
 		bool isLoaded(string a);
 		bool replace(string a, string b);
 		void Least_Recently_Used();
 		int activePageCount();
 		vector<string> getHistory();
-		vector<vector<string>> getPageData();
+		vector<vector<Operation>> getPageData();
 		string getPageDataColumn(int selector);
 		
 
@@ -45,8 +45,8 @@ class PageManager {
 		Operation *leaf;
 		int frame_count;
 		int page_fault_count;
-		vector<string> pages;
+		vector<Operation> pages;
 		vector<string> history;
-		vector<vector<string>> page_data;
+		vector<vector<Operation>> page_data;
 };
 #endif

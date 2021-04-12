@@ -72,15 +72,16 @@ string PageManager::read_leaf(){
 	return leaf->getValue();
 };
 
-vector<string> PageManager::traverse(){
+vector<Operation> PageManager::traverse(){
 	Operation* b = root;
 	Operation* o = b;
-	vector<string> s;
+	vector<Operation> s;
 
 	while(b){
 		while(o){
 			cout << o->getValue() << endl;
-			s.push_back(o->getValue());
+			Operation a(o->getValue());
+			s.push_back(a);
 			o = o->getAcross();
 		}
 		b = b->getUp();
@@ -90,7 +91,7 @@ vector<string> PageManager::traverse(){
 	return s;
 }
 
-vector<string> PageManager::traverseReverse(){
+vector<Operation> PageManager::traverseReverse(){
 	Operation* top_branch = root;
 	Operation* current_branch = root;
 	Operation* behind_current_branch = root;
@@ -98,7 +99,7 @@ vector<string> PageManager::traverseReverse(){
 	Operation* current_page = root;
 	Operation* b = root;
 	Operation* p = root;
-	vector<string> s;
+	vector<Operation> s;
 
 	//Get Top Branch
 	while(current_branch->getUp()){
@@ -136,10 +137,12 @@ vector<string> PageManager::traverseReverse(){
 			}
 			current_page = b;
 			cout << p->getValue() << endl;
-			s.push_back(p->getValue());
+			Operation temp(p->getValue());
+			s.push_back(temp);
 		}
 		cout << current_branch->getValue() << endl;
-		s.push_back(current_branch->getValue());
+		Operation temp(current_branch->getValue());
+		s.push_back(temp);
 	}
 	//Fun fact. If you remove the return line you can still compile the program but it won't run (-: (upside_down smiley face)
 	return s;
@@ -170,7 +173,7 @@ void PageManager::display(){
 	{ 
 		for (int innerVector = 0, innerVectorSize = page_data.at(outerVector).size(); innerVector < innerVectorSize; innerVector++)
 		{
-			cout << page_data.at(outerVector).at(innerVector) << " ";
+			cout << page_data.at(outerVector).at(innerVector).getValue() << " ";
 		}
 		cout << endl;
 	}
@@ -226,8 +229,9 @@ string PageManager::displayNumberFormatter(string n)
 }
 
 bool PageManager::step(){
-	vector<string> p(pages);
-	while(p.size() < frame_count){p.push_back("");}
+	vector<Operation> p(pages);
+	Operation a("");
+	while(p.size() < frame_count){p.push_back(a);}
 	page_data.push_back(p);
 
 	if(leaf){
@@ -259,14 +263,15 @@ int PageManager::getFrameCount(){
 	return frame_count;
 }
 
-vector<string> PageManager::getPages(){
+vector<Operation> PageManager::getPages(){
 	return pages;
 }
 
 bool PageManager::add_page(string v){
 	history.push_back(v);
 	if(!isFull() && !isLoaded(v)){
-		pages.push_back(v);
+		Operation o(v);
+		pages.push_back(o);
 		return true;
 	}
 	else{
@@ -299,7 +304,7 @@ vector<string> PageManager::getHistory(){
 bool PageManager::isLoaded(string a)
 {
 	for(int counter = 0, count = getPages().size(); counter < count; counter++){
-		if(pages.at(counter) == a){return true;}
+		if(pages.at(counter).getValue() == a){return true;}
 	}
 	return false;
 }
@@ -307,7 +312,7 @@ bool PageManager::isLoaded(string a)
 bool PageManager::replace(string a, string b)
 {
 	for(int counter = 0, count = getPages().size(); counter < count; counter++){
-		if(pages.at(counter) == a){pages.at(counter) = b; return true;}
+		if(pages.at(counter).getValue() == a){pages.at(counter).setValue(b); return true;}
 	}
 	return false;
 }
@@ -316,14 +321,14 @@ void PageManager::Least_Recently_Used(){
 	start();
 	int frameCount = getFrameCount();			
 	
-	vector<string> s;
+	vector<Operation> s;
 	for(int counter = 0, count = input.length(); counter < count; counter++){
 		if(!add_page((*(new string(1, input.at(counter)))))){
 			s = getPages();
 			cout << "Page Current State" << endl;
 			int countFrames = s.size();
 			for(int counterFrames = 0; counterFrames < countFrames; counterFrames++){
-			    cout << s.at(counterFrames) << " ";
+			    cout << s.at(counterFrames).getValue() << " ";
 			}
 			cout << endl;
 			cout << endl;
@@ -343,7 +348,7 @@ void PageManager::Least_Recently_Used(){
 					int countFrames = s.size();
 					cout << "Page Current State" << endl;
 					for(int counterFrames = 0; counterFrames < countFrames; counterFrames++){
-						cout << s.at(counterFrames) << " ";
+						cout << s.at(counterFrames).getValue() << " ";
 					}
 					cout << endl;
 					cout << endl;
@@ -357,7 +362,23 @@ void PageManager::Least_Recently_Used(){
      display();
 }
 
-vector<vector<string>> PageManager::getPageData(){
+void PageManager::Clock_Algorithm(){
+	// //If 
+	// start();
+	// int frameCount = getFrameCount();			
+	
+	// vector<string> s;
+	// //While input length
+	// for(int counter = 0, count = input.length(); counter < count; counter++){
+	// 	//While not full add
+	// 	if(!add_page((*(new string(1, input.at(counter)))))){
+	// 		vector<string> p(pages);
+	// 	}
+	
+	// }
+}
+
+vector<vector<Operation>> PageManager::getPageData(){
 	return page_data;
 }
 
@@ -365,7 +386,7 @@ string PageManager::getPageDataColumn(int selector){
 	int cells = (getPageData().size()/*Column*/ * getPageData().at(0).size()/*Row*/);
 	int column = (selector / getPageData().size());
 	int row = (selector % getPageData().size());
-	return getPageData().at(row).at(column);
+	return getPageData().at(row).at(column).getValue();
 }
 
 void PageManager::incrementPageFaultCount(){
