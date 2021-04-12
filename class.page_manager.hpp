@@ -36,6 +36,9 @@ class PageManager {
 		Operation *branch;
 		Operation *leaf;
 		int frame_count;
+		int page_fault_count;
 		vector<string> pages;
+		vector<string> history;
+		vector<vector<string>> page_data;
 };
 #endif
