@@ -12,27 +12,6 @@ void display(int f, vector<int> p);
 
 int main(){
      PageManager pm;
-     pm.add_leaf("1");
-     pm.add_leaf("2");
-     pm.add_leaf("3");
-     pm.add_leaf("4");
-     pm.add_branch();
-     pm.add_leaf("5");
-     pm.add_leaf("6");
-     pm.add_leaf("7");
-     pm.add_branch();
-     pm.add_leaf("8");
-     pm.add_leaf("9");
-     pm.add_leaf("10");
-     pm.traverse();
-     
-	vector<int> vi;
-	vi.push_back(1);
-	vi.push_back(2);
-     vi.push_back(5);
-     vi.push_back(7);
-
-	display(4,vi);
 	return 0;
 }
 
