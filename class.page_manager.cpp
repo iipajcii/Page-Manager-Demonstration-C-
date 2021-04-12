@@ -118,4 +118,10 @@ string PageManager::displayNumberFormatter(string n)
 	{return "  " + to_string(num) + "";}
  	return to_string(num);
 }
+
+
+void PageManager::start(){
+	leaf = root;
+	branch = root;
+}
 #endif
