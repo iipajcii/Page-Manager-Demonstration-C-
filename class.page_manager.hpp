@@ -13,6 +13,8 @@ class PageManager {
 		string read_leaf();
 		void traverse();
 		int count();
+		string displayNumberFormatter(int num);
+		string displayNumberFormatter(string n);
 
 	private:
 		Operation *root;

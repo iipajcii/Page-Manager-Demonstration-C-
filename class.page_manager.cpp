@@ -95,4 +95,27 @@ int PageManager::count(){
 	}
 	return count;
 }
+
+string PageManager::displayNumberFormatter(int num)
+{
+	if(num < 10)
+	{return "  " + to_string(num) + "  ";}
+	else if (num < 100)
+	{return "  " + to_string(num) + " ";}
+	else if (num < 1000)
+	{return "  " + to_string(num) + "";}
+ 	return to_string(num);
+}
+
+string PageManager::displayNumberFormatter(string n)
+{
+	int num = std::stoi(n);
+	if(num < 10)
+	{return "  " + to_string(num) + "  ";}
+	else if (num < 100)
+	{return "  " + to_string(num) + " ";}
+	else if (num < 1000)
+	{return "  " + to_string(num) + "";}
+ 	return to_string(num);
+}
 #endif
