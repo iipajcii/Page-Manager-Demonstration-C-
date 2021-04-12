@@ -275,6 +275,26 @@ bool PageManager::replace(string a, string b)
 vector<vector<string>> PageManager::getPageData(){
 	return page_data;
 }
+
+string PageManager::getPageDataColumn(int selector){
+	// cout << "Selector:" << selector;
+	// cout << "  Columns: " << getPageData().size();
+	// cout << "  Rows:    " << getPageData().at(0).size();
+	// cout << "  Cells:   " << getPageData().at(0).size() * getPageData().size();
+
+	int cells = (getPageData().size()/*Column*/ * getPageData().at(0).size()/*Row*/);
+	// int column = (selector / getPageData().at(0).size());
+	// int row = selector % getFrameCount();
+	int column = (selector / getPageData().size());
+	int row = (selector % getPageData().size());
+	// cout << "  Column: " << column;
+	// cout << "  Row:    " << row << endl;
+	// cout << getPageData().at(column).at(row) << endl;
+	// return "";
+	// return getPageData().at(column).at(row);
+	return getPageData().at(row).at(column);
+}
+
 void PageManager::incrementPageFaultCount(){
 	page_fault_count++;
 }

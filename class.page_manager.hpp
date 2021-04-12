@@ -32,6 +32,8 @@ class PageManager {
 		bool isFull();
 		bool replace(string a, string b);
 		int activePageCount();
+		vector<vector<string>> getPageData();
+		string getPageDataColumn(int selector);
 		
 
 	private:
