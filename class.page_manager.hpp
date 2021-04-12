@@ -8,6 +8,7 @@ class PageManager {
 	public:
 		PageManager();
 		PageManager(string input);
+		bool setInput(string v);
 		bool next_branch();
 		bool next_leaf();
 		bool add_branch();
