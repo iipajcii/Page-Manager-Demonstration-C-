@@ -87,21 +87,26 @@ void PageManager::traverse(){
 	}
 }
 
-void PageManager::traverseReverse(){
+vector<string> PageManager::traverseReverse(){
 	Operation* top_branch = root;
 	Operation* current_branch = root;
+	Operation* behind_current_branch = root;
 	Operation* last_page = root;
 	Operation* current_page = root;
 	Operation* b = root;
 	Operation* p = root;
+	vector<string> s;
 
 	//Get Top Branch
 	while(current_branch->getUp()){
+		behind_current_branch = current_branch;
 		current_branch = current_branch->getUp();
 		cout << current_branch->getValue() << endl;
 	}
 
-	top_branch = current_branch;
+	//This if-else is to correct an error found in reverseTraverse if addBranch is called with no leaf added
+	if(current_branch->getValue() != ""){top_branch = current_branch;}
+	else{top_branch = behind_current_branch;}
 	
 	//Progressively Go Down from Top Branch
 	while(current_branch != root){
@@ -128,10 +133,15 @@ void PageManager::traverseReverse(){
 			}
 			current_page = b;
 			cout << p->getValue() << endl;
+			s.push_back(p->getValue());
 		}
 		cout << current_branch->getValue() << endl;
+		s.push_back(current_branch->getValue());
 	}
+	//Fun fact. If you remove the return line you can still compile the program but it won't run (-: (upside_down smiley face)
+	return s;
 }
+
 
 int PageManager::count(){
 	Operation* b = root;
