@@ -17,6 +17,7 @@ class PageManager {
 		string read_leaf();
 		vector<string> traverse();
 		vector<string> traverseReverse();
+		void display();
 		int count();
 		void start();
 		bool step();
