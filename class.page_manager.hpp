@@ -41,6 +41,7 @@ class PageManager {
 		void setClockHand(int i);
 		void setClockHand(Operation* o);
 		Operation* getClockHand();
+		Operation* getPage(string a);
 
 	private:
 		Operation *root;

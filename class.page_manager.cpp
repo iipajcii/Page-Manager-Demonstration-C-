@@ -419,4 +419,11 @@ void PageManager::setClockHand(Operation* o){
 Operation* PageManager::getClockHand(){
 	return clock_hand;
 }
+
+Operation* PageManager::getPage(string a){
+	for(int counter = 0, count = getPages().size(); counter < count; counter++){
+		if(pages.at(counter).getValue() == a){return &(pages.at(counter));}
+	}
+	return NULL;
+}
 #endif
