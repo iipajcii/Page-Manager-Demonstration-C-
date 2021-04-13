@@ -38,6 +38,9 @@ class PageManager {
 		vector<vector<Operation>> getPageData();
 		string getPageDataColumn(int selector);
 		
+		void setClockHand(int i);
+		void setClockHand(Operation* o);
+		Operation* getClockHand();
 
 	private:
 		Operation *root;
@@ -48,5 +51,6 @@ class PageManager {
 		vector<Operation> pages;
 		vector<string> history;
 		vector<vector<Operation>> page_data;
+		Operation* clock_hand;
 };
 #endif

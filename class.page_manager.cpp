@@ -6,6 +6,7 @@ PageManager::PageManager(){
 	root = new Operation("");
 	branch = root;
 	leaf = root;
+	clock_hand = NULL;
 };
 
 PageManager::PageManager(string in){
@@ -13,6 +14,7 @@ PageManager::PageManager(string in){
 	branch = root;
 	leaf = root;
 	input = in;
+	clock_hand = NULL;
 };
 
 bool PageManager::next_branch(){
@@ -397,4 +399,16 @@ int PageManager::getPageFaultCount(){
 	return page_fault_count;
 }
 
+
+void PageManager::setClockHand(int i){
+	clock_hand = &(pages.at(i));
+}
+
+void PageManager::setClockHand(Operation* o){
+	clock_hand = o;
+}
+
+Operation* PageManager::getClockHand(){
+	return clock_hand;
+}
 #endif
