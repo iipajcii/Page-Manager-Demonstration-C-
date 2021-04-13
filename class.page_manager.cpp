@@ -314,7 +314,7 @@ bool PageManager::isLoaded(string a)
 bool PageManager::replace(string a, string b)
 {
 	for(int counter = 0, count = getPages().size(); counter < count; counter++){
-		if(pages.at(counter).getValue() == a){pages.at(counter).setValue(b); return true;}
+		if(pages.at(counter).getValue() == a){pages.at(counter).setValue(b);pages.at(counter).setTicks(1); return true;}
 	}
 	return false;
 }
