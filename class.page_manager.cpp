@@ -366,19 +366,32 @@ void PageManager::Least_Recently_Used(){
 }
 
 void PageManager::Clock_Algorithm(){
-	// //If 
-	// start();
-	// int frameCount = getFrameCount();			
-	
-	// vector<string> s;
-	// //While input length
-	// for(int counter = 0, count = input.length(); counter < count; counter++){
-	// 	//While not full add
-	// 	if(!add_page((*(new string(1, input.at(counter)))))){
-	// 		vector<string> p(pages);
-	// 	}
-	
-	// }
+	start();
+	// Cycle through the user input to decide what how the pages requested are going to be loaded
+	for(int counter = 0, count = input.length(); counter < count; counter++){
+		//If memory is not full and the page is not loaded add page to a frame		
+		if(!add_page((*(new string(1, input.at(counter)))))){
+			string in = (*(new string(1, input.at(counter))));
+			//If the page chosen is loaded in memory increment its ticks to one, this is equivalent to replacing a value with itself (ticks will be set back to 1)
+			if(isLoaded(in)){replace(in,in);}
+			else {
+				// If the clock_hand pointer is pointing to null set it to point to the page in the first frame
+				if(getClockHand() == NULL){setClockHand(0);}
+
+				//Cycle through all the pages and decrement the value of the ticks as you go along. Do this until you land on a page that has ticks equal to 0
+				while(getClockHand()->getTicks() > 0){
+					getClockHand()->decrementTicks();
+					tick();
+				}
+				// Victim Chosen!
+				replace(getClockHand()->getValue(),in);
+			}
+		}
+		// Save the current stage of the pages
+		step();
+	}
+	// Display a table of the saved page data
+	display();
 }
 
 vector<vector<Operation>> PageManager::getPageData(){

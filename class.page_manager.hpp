@@ -33,6 +33,7 @@ class PageManager {
 		bool isLoaded(string a);
 		bool replace(string a, string b);
 		void Least_Recently_Used();
+		void Clock_Algorithm();
 		int activePageCount();
 		vector<string> getHistory();
 		vector<vector<Operation>> getPageData();
