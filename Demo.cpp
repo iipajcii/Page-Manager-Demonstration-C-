@@ -12,9 +12,12 @@ void display(int f, vector<int> p);
 
 int main(){
      PageManager pm;
-     pm.setFrameCount(4);
-     pm.input = "1234352678";
+     pm.setFrameCount(5);
+     // pm.input = "11212653452";
+     pm.input = "948464342494142474";
+     // pm.input = "3423656778343";
      pm.Least_Recently_Used();
+     pm.Clock_Algorithm();
 	return 0;
 }
 
