@@ -255,6 +255,7 @@ void PageManager::start(){
 	branch = root;
 	page_data.clear();
 	history.clear();
+	pages.clear();
 }
 
 void PageManager::setFrameCount(int f){
