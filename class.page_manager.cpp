@@ -399,6 +399,14 @@ int PageManager::getPageFaultCount(){
 	return page_fault_count;
 }
 
+bool PageManager::tick(){
+	//Loop through all the inputs
+	for(int counter = 0, count = pages.size()-1; counter < count; counter++){
+		if(getClockHand() == &(pages.at(counter))){setClockHand(counter + 1); return true;}
+	}
+	setClockHand(0);
+	return false;
+}
 
 void PageManager::setClockHand(int i){
 	clock_hand = &(pages.at(i));

@@ -37,7 +37,7 @@ class PageManager {
 		vector<string> getHistory();
 		vector<vector<Operation>> getPageData();
 		string getPageDataColumn(int selector);
-		
+		bool tick();
 		void setClockHand(int i);
 		void setClockHand(Operation* o);
 		Operation* getClockHand();
