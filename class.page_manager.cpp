@@ -440,4 +440,9 @@ Operation* PageManager::getPage(string a){
 	}
 	return NULL;
 }
+
+string PageManager::getInput(){
+	return input;
+}
+
 #endif
