@@ -245,6 +245,7 @@ void PageManager::start(){
 	page_data.clear();
 	history.clear();
 	pages.clear();
+	page_fault_count = 0;
 }
 
 void PageManager::setFrameCount(int f){
@@ -261,6 +262,7 @@ vector<Operation> PageManager::getPages(){
 
 bool PageManager::add_page(string v){
 	history.push_back(v);
+	if(!isLoaded(v)){incrementPageFaultCount();}
 	if(!isFull() && !isLoaded(v)){
 		Operation o(v);
 		pages.push_back(o);
