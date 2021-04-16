@@ -44,6 +44,7 @@ class PageManager {
 		Operation* getClockHand();
 		Operation* getPage(string a);
 		string getInput();
+		void getRange();
 
 	private:
 		Operation *root;
@@ -55,5 +56,6 @@ class PageManager {
 		vector<string> history;
 		vector<vector<Operation>> page_data;
 		Operation* clock_hand;
+		int range[2]; //Minimum and Maximum value of input
 };
 #endif

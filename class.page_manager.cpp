@@ -415,4 +415,18 @@ string PageManager::getInput(){
 	return input;
 }
 
+void PageManager::getRange(){
+	//Minimum and Maximum value
+	int min = 0, max = 0;
+	for(int counter = 0, count = getInput().length(); counter < count; counter++){
+		if((int)input.at(counter) - 48 /*ASCII Math*/ > max){max = (int)input.at(counter) - 48 /*ASCII Math*/;}
+	}
+	min = max;
+	for(int counter = 0, count = getInput().length(); counter < count; counter++){
+		if((int)input.at(counter) - 48 /*ASCII Math*/ < min){min = (int)input.at(counter) - 48 /*ASCII Math*/;}
+	}
+	range[0] = min;
+	range[1] = max;
+}
+
 #endif
