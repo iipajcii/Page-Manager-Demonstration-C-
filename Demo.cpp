@@ -23,7 +23,6 @@ int main(){
      } while(frameCount > 5 || frameCount < 3);
 
      while(refstrings >> str){
-          cout << "Reference String: " << str << endl << endl;
           PageManager pm;
           pm.setInput(str);
           pm.setFrameCount(frameCount);

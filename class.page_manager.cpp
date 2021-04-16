@@ -191,7 +191,10 @@ void PageManager::display(){
 		cout << endl;
 		if(row_count == rows - 1){for(int i = 0; i < columns; i++){cout << "+-------+";}}
 	}
-	cout << endl << endl << endl;
+	cout << endl;
+	cout << "Reference String: " << input << endl;
+	cout << "Min: " << range[0] << "  Max: " << range[1] << endl;
+	cout << "Page Faults: " << getPageFaultCount() << endl << endl << endl;
 
 }
 
@@ -245,6 +248,7 @@ void PageManager::start(){
 	page_data.clear();
 	history.clear();
 	pages.clear();
+	getRange();
 	page_fault_count = 0;
 }
 
