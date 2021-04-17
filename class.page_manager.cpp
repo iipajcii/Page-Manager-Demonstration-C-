@@ -435,4 +435,43 @@ void PageManager::getRange(){
 	range[1] = max;
 }
 
+bool PageManager::Mirror_Prepage(string v) {
+	//Get ranges
+	int min = range[0];
+	int max = range[1];
+	int page_range = max - min;
+	int page_input = std::stoi(v);
+	int page_to_add;
+	//If frames are not full then you can prepage, else no prepaging can be done.
+	if(!isFull()) {
+		//If range is odd then a number is the center.
+		if(((max - min) % 2) == 0){
+			//odd
+			int center = (page_range / 2) + min;
+			if(page_input == center){page_to_add = center;/*Decide what to do if the page requested is */}
+			else{
+				if(page_input < center){int distance = abs(center - page_input); page_to_add = center + distance;}
+				if(page_input > center){int distance = abs(page_input - center); page_to_add = center - distance;}
+			}
+		}
+		//If range is even then the center is between 2 numbers
+		else {
+			//even
+			int center = min + (page_range / 2);
+			if(page_input <= center){ page_to_add = center + abs(center - page_input) + 1;}
+			if(page_input >  center){ page_to_add = center - (abs(page_input - center) - 1);}
+		}
+		string s = to_string(page_to_add);
+		//if not full (checked in above condition) and not loaded. load the opposite of the input
+		if(!isLoaded(s)){
+			Operation o(s);
+			pages.push_back(s);
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	return false;
+}
 #endif

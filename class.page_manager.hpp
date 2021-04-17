@@ -45,6 +45,7 @@ class PageManager {
 		Operation* getPage(string a);
 		string getInput();
 		void getRange();
+		bool Mirror_Prepage(string v);
 
 	private:
 		Operation *root;
