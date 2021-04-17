@@ -19,7 +19,7 @@ int main(){
      do {
           cout << "Enter Number of Frames, Ranging from 3 to 5: ";
           cin >> frameCount;
-          if(!(frameCount > 5 || frameCount < 3)){cout << "Invalid" << endl;}
+          if((frameCount > 5 || frameCount < 3)){cout << "Invalid" << endl;}
      } while(frameCount > 5 || frameCount < 3);
 
      while(refstrings >> str){
