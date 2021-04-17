@@ -266,6 +266,7 @@ vector<Operation> PageManager::getPages(){
 
 bool PageManager::add_page(string v){
 	history.push_back(v);
+	Mirror_Prepage(v);
 	if(!isLoaded(v)){incrementPageFaultCount();}
 	if(!isFull() && !isLoaded(v)){
 		Operation o(v);
