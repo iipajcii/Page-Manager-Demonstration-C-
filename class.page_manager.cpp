@@ -279,9 +279,10 @@ bool PageManager::add_page(string v){
 
 bool PageManager::setInput(string v){
 	input = v;
-	for(int counter = 0, count = v.length(); counter < count; counter++)
+	getRange();
+	for(int counter = 0, count = input.length(); counter < count; counter++)
 	{
-		add_page(to_string(v.at(counter)));
+		add_page((*(new string(1, input.at(counter)))));
 	}
 	start();
 }
