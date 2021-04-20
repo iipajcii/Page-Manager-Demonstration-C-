@@ -445,7 +445,7 @@ bool PageManager::Mirror_Prepage(string v) {
 	int page_input = std::stoi(v);
 	int page_to_add;
 	//If frames are not full then you can prepage, else no prepaging can be done.
-	if(!isFull()) {
+	if(!(activePageCount() + 1 >= getFrameCount())) {
 		//If range is odd then a number is the center.
 		if(((max - min) % 2) == 0){
 			//odd
